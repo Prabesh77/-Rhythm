@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import PlayPause from './PlayPause'
 import { playPause, setActiveSong } from '../redux/features/playerSlice'
+import { logo } from '../assets';
 
 const SongCard = ({song, i, isPlaying, activeSong, data}) => {
 
@@ -25,7 +26,7 @@ const SongCard = ({song, i, isPlaying, activeSong, data}) => {
       <div className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${activeSong?.title == song.title ? 'flex bg-black bg-opacity-70': 'hidden'}`}>
         <PlayPause song={song} isPlaying={isPlaying} activeSong={activeSong} handlePause={handlePauseClick} handlePlay={handlePlayClick} />
       </div>
-      <img src={song.images?.coverart} alt="song_img" />
+      <img src={song.images?.coverart || logo} alt="song_img" />
     </div>
     <div className='mt-4 flex flex-col'>
       <p className='font-semibold text-lg text-white truncate'>
